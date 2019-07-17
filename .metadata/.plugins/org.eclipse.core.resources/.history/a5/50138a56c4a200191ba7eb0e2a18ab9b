@@ -1,0 +1,16 @@
+package com.example.ribbon;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+@Service
+public class ConsumerService {
+	
+	@Autowired
+	RestTemplate restTemplate;
+	
+	public	String	consumerAdd()	{
+		return	restTemplate.getForEntity("http://eureka-service/add?a=10&b=20",String.class).getBody();
+	}
+}	

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aop-reference-model>
+<aop-project name="eureka-service-A"/>
+<aop-project name="eureka-service2-B"/>
+<aop-project name="eureka-ribbon">
+<aspect-definition advice-class-name="com.netflix.hystrix.contrib.javanica.aop.aspectj.HystrixCommandAspect" advice-method-name="methodsAnnotatedWithHystrixCommand(org.aspectj.lang.ProceedingJoinPoint)" advice-type="AROUND" aspect-end-line-number="-1" aspect-name="hystrixCommandAspect" aspect-start-line-number="-1" factory-id="org.springframework.ide.eclipse.aop.core.annotationAspectDefinitionElementFactory" file="/eureka-ribbon/src/main/java/com/example/ribbon/EurekaRibbonApplication.java" pointcut-expression="hystrixCommandAnnotationPointcut() || hystrixCollapserAnnotationPointcut()" proxy-target-class="true">
+<aop-reference advice-type="AROUND" bean="1:BeansModel|2:eureka-ribbon|3:java:com.example.ribbon.EurekaRibbonApplication|8:consumerService:10" bean-file="/eureka-ribbon/src/main/java/com/example/ribbon/ConsumerService.java" bean-start-line="10" factory-id="org.springframework.ide.eclipse.aop.core.aopReferenceElementFactory" file="/eureka-ribbon/src/main/java/com/example/ribbon/EurekaRibbonApplication.java" source="=eureka-ribbon/\/home\/pengsheng\/Documents\/repo\/com\/netflix\/hystrix\/hystrix-javanica\/1.5.18\/hystrix-javanica-1.5.18.jar&lt;com.netflix.hystrix.contrib.javanica.aop.aspectj(HystrixCommandAspect.class[HystrixCommandAspect~methodsAnnotatedWithHystrixCommand~Lorg.aspectj.lang.ProceedingJoinPoint;" source-start-line="-1" target="=eureka-ribbon/src\/main\/java&lt;com.example.ribbon{ConsumerService.java[ConsumerService~consumerAdd" target-start-line="24"/>
+</aspect-definition>
+</aop-project>
+<aop-project name="eureka-feign"/>
+<aop-project name="eureka-server"/>
+<aop-project name="eureka-zuul"/>
+</aop-reference-model>

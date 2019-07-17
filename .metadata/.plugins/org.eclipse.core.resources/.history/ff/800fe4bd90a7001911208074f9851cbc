@@ -1,0 +1,63 @@
+package com.example.rabbitMQ;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@EnableBinding(EurekaRabbitMqApplication.TestTopic.class)
+@SpringBootApplication
+public class EurekaRabbitMqApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(EurekaRabbitMqApplication.class, args);
+	}
+	
+	@Slf4j
+    @RestController
+    static class TestController {
+
+        @Autowired
+        private TestTopic testTopic;
+
+        /**
+         * 消息生产接口
+         *
+         * @param message
+         * @return
+         */
+        @GetMapping("/sendMessage")
+        public String messageWithMQ(@RequestParam String message) {
+            log.info("Send: " + message);
+            testTopic.output().send(MessageBuilder.withPayload(message).setHeader("x-delay", 5000).build());
+            return "ok";
+        }
+
+    }
+
+    /**
+     * 消息消费逻辑
+     */
+    @Slf4j
+    @Component
+    static class TestListener {
+
+        @StreamListener(TestTopic.INPUT)
+        public void receive(String payload) {
+            log.info("Received: " + payload);
+        }
+
+    }
+
+    interface TestTopic {
+
+        String OUTPUT = "example-topic-output";
+        String INPUT = "example-topic-input";
+
+        @Output(OUTPUT)
+        MessageChannel output();
+
+        @Input(INPUT)
+        SubscribableChannel input();
+
+    }
+
+}

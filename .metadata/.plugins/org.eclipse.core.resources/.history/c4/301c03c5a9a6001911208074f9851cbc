@@ -1,0 +1,17 @@
+#从ribbon演化成feign，因为feign已经整合了Ribbon和Eureka
+spring:
+  application:
+    name: eureka-feign-client
+
+server:
+  port: 4444
+  
+
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:1111/eureka/ #http://localhost:1111/
+    

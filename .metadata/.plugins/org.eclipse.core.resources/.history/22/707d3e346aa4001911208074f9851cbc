@@ -1,0 +1,43 @@
+package com.example.zuul;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.netflix.zuul.ZuulFilter;
+import com.netflix.zuul.exception.ZuulException;
+
+/**
+ * 在完成了服务路由之后，我们对外开放服务还需要一些安全措施来保护客户端只能访问它应该访问到的资源。所以我们需要利用Zuul的过滤器来实现我们对外服务的安全控制。
+ * @author pengsheng
+ *
+ */
+public class AccessFilter extends ZuulFilter {
+
+	
+	private static Logger log = LoggerFactory.getLogger(AccessFilter.class);
+	
+	@Override
+	public boolean shouldFilter() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public Object run() throws ZuulException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String filterType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int filterOrder() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

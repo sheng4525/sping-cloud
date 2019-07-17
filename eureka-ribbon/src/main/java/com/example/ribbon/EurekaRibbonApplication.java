@@ -1,0 +1,37 @@
+package com.example.ribbon;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
+
+/**
+ * 负载均衡来调用eureka-service重启一个后改多个端口号进行重启多个eureka-service消费者，
+ * 加上断路器如果调用eureka-service调不通时，一直请求中直到超时，会面临着系统瘫痪
+ * 访问http://localhost:3333/add 查看消费者的日志
+ * @author pengsheng
+ *
+ */
+@EnableDiscoveryClient
+@SpringBootApplication
+@EnableCircuitBreaker  //开启断路器
+public class EurekaRibbonApplication {
+
+	/**
+	 * @LoadBalanced注解开启均衡负载能力
+	 * @return
+	 */
+	@Bean
+	@LoadBalanced
+	RestTemplate restTemplate() {
+		return new RestTemplate();
+	}
+	
+	public static void main(String[] args) {
+		SpringApplication.run(EurekaRibbonApplication.class, args);
+	}
+
+}

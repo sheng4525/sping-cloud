@@ -1,0 +1,14 @@
+spring.application.name=stream-delayed-message
+server.port=8080
+
+#spring.rabbitmq.host=localhost
+#spring.rabbitmq.port=5672
+#spring.rabbitmq.username=guest
+#spring.rabbitmq.password=guest
+
+spring.cloud.stream.bindings.example-topic-input.destination=delay-topic
+spring.cloud.stream.bindings.example-topic-input.group=test
+spring.cloud.stream.rabbit.bindings.example-topic-input.consumer.delayed-exchange=true
+
+spring.cloud.stream.bindings.pengsheng-topic-output.destination=delay-topic
+spring.cloud.stream.rabbit.bindings.example-topic-output.producer.delayed-exchange=true

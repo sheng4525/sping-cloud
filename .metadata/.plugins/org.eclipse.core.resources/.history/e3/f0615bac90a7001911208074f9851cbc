@@ -1,0 +1,13 @@
+package com.example.rabbitMQ;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class EurekaRabbitMqApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(EurekaRabbitMqApplication.class, args);
+	}
+
+}

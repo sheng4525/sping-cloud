@@ -1,0 +1,21 @@
+spring.application.name=stream-delayed-message
+server.port=8080
+
+#spring.rabbitmq.host=localhost
+#spring.rabbitmq.port=5672
+#spring.rabbitmq.username=guest
+#spring.rabbitmq.password=guest
+
+#1.消息生产端  注：pengsheng-topic-output这个名字跟EurekaRabbitMqApplication类里面对应
+spring.cloud.stream.bindings.pengsheng-topic-output.destination=delay-topic
+#开启是否延迟
+spring.cloud.stream.rabbit.bindings.pengsheng-topic-output.producer.delayed-exchange=true 
+
+#2.消息消费端
+spring.cloud.stream.bindings.pengsheng-topic-input.destination=delay-topic
+#分组
+spring.cloud.stream.bindings.pengsheng-topic-input.group=test  
+#因为生产端开启了消息延迟所以消费端也要开启
+spring.cloud.stream.rabbit.bindings.pengsheng-topic-input.consumer.delayed-exchange=true 
+
+

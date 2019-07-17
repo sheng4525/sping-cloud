@@ -1,0 +1,11 @@
+package com.example.feign.service;
+
+public class ComputeClientHystrix implements FeignServiceClient {
+
+	@Override
+	public Integer add(Integer a, Integer b) {
+		
+		return -99999;
+	}
+
+}

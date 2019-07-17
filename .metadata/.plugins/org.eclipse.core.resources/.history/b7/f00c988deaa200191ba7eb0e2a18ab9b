@@ -1,0 +1,19 @@
+spring.application.name=api-gateway
+server.port=5555
+
+#	routes	to	url 这个是根据地址URL访问
+#访问http://localhost:5555/api-a/add?a=1&b=2 调用http://localhost:2222/地址的方法	
+#如果对外提供接口可以用这个
+zuul.routes.api-a-url.path=/api-a-url/**
+zuul.routes.api-a-url.url=http://localhost:2222/  
+
+
+#下面是根据serviceId访问
+#访问：http://localhost:5555/api-b/add?a=1&b=2调用eureka-service-b方法	
+zuul.routes.api-b.path=/api-b/**
+zuul.routes.api-b.serviceId=eureka-service-b
+
+#访问：http://localhost:5555/api-a/add?a=1&b=2调用eureka-	-a方法	
+zuul.routes.api-a.path=/api-a/**
+zuul.routes.api-a.serviceId=eureka-service-a
+eureka.client.serviceUrl.defaultZone=http://localhost:1111/eureka/

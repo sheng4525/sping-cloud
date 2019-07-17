@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: eureka-service-b
+
+server:
+  port: 2223
+  
+
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:1111/eureka/ #http://localhost:1111/
+    

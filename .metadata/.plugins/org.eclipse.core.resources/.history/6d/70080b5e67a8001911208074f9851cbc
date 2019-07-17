@@ -1,0 +1,18 @@
+
+#spring.application.name值必须与上一阶段Nacos中创建的配置Data Id匹配（除了.properties或者.yaml后缀）
+spring.application.name=alibaba-nacos-config-client
+server.port=8600
+
+#进行分空间
+spring.cloud.nacos.config.namespace=d5442bf2-a1c5-495e-82e0-a5336dc2727d
+#在空间里面再进行分组，指定开发环境1,如果去掉的话就是默认环境
+spring.cloud.nacos.config.group=DEV1_GROUP
+
+spring.cloud.nacos.config.ext-config[0].data-id=actuator.properties
+spring.cloud.nacos.config.ext-config[0].group=DEFAULT_GROUP
+spring.cloud.nacos.config.ext-config[0].refresh=true
+spring.cloud.nacos.config.ext-config[1].data-id=log.properties
+spring.cloud.nacos.config.ext-config[1].group=DEFAULT_GROUP
+spring.cloud.nacos.config.ext-config[1].refresh=true
+
+spring.cloud.nacos.config.server-addr=127.0.0.1:8848
